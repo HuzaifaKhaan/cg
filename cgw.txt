@@ -1,0 +1,377 @@
+^^^^^^^^^^^^^^^^^^^^^^lab 2 dda^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+x1 = input('enter x1:');
+x2 = input('enter x2:');
+y1 = input('enter y1:');
+y2 = input('enter y2:');
+
+dx = x2-x1;
+dy = y2-y1;
+
+if dx>dy;
+    step = dx;
+else
+    step = dy;
+end
+
+xinc = dx/step;
+yinc = dy/step;
+X = x1;
+Y = y1;
+grid on
+hold on
+plot(X,Y,'*')
+
+for i=1:step;
+    X = X +xinc;
+    Y = Y+yinc;
+    grid on
+    hold on
+    plot(X,Y,'^')
+end
+
+^^^^^^^^^^^^^^^^^^^^^^lab 3 bresenham^^^^^^^^^^^^^^^^^^^
+
+x1 = input('enter x1:');
+x2 = input('enter x2:');
+y1 = input('enter y1:');
+y2 = input('enter y2:');
+
+dx = x2-x1;
+dy = y2-y1;
+
+dy2 = dy*2;
+dx2 = dx*2;
+new = dy2-dx2
+
+p0 = dy2-dy
+p=p0
+
+for i=0:dx;
+    if p<0;
+        x1 = x1+1;
+        p = p+1;
+        p = p +dy2;
+        grid on
+        hold on
+        plot(x1,y1,'*')
+    else
+        x1 = x1+1;
+        y - y1+1;
+        p = p+1;
+        p = p +dy2-dx2;
+        grid on
+        hold on
+        plot(x1,y1,'^')
+    end
+end
+
+
+^^^^^^^^^^^^^^^^lab 4 circle^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+r = input('ENTER RADIUS');
+
+x = 0;
+y = r;
+Pk = 1-r;
+plot(x,y,'*')
+hold on
+grid on
+while x<=y; 
+    if Pk<0;
+        x = x+1;
+        y = y;
+        Pk = Pk+(2*x)+1;
+        hold on
+        grid on
+        plot(x,y,'*')
+        plot(-x,y,'*')
+        plot(x,-y,'*')
+        plot(-x,-y,'*')
+    else
+        x=x+1;
+        y=y-1;
+        Pk=Pk+(x*2)-(y*2)+1;
+        hold on
+        grid on
+        plot(x,y,'*')
+        plot(x,-y,'*')
+        plot(-x,y,'*')
+        plot(-x,-y,'*')
+    end
+    a = 2 * x+2;
+    b = 2 * y-2;
+ 
+end    
+
+title = ('TASK 2 CIRCLE');
+n = input('enter no of points of a circle');
+angle = 0:2*pi/n:2*pi;
+r=1;
+x1=r*cos(angle);
+y1=r*sin(angle);
+x2=r*cos(angle+2*pi/n);
+y2=r*sin(angle+2*pi/n);
+line([x1 x2],[y1 y2]);
+axis equal;
+grid on
+
+n = input('enter starting point: ');
+angle = 0:2*pi/n:2*pi;
+r = 15;
+temp = 15;
+% title = ('TASK 3 five CIRCLE');
+for i=1:5;
+    x1=r*cos(angle)+temp;
+    y1=r*sin(angle);
+    x2=r*cos(angle+2*pi/n)+temp;
+    y2=r*sin(angle+2*pi/n);
+    line([x1 x2],[y1 y2]);
+    axis equal;
+    grid on;
+    temp = temp+35;
+    if i==1;
+        fill(x1,y1,'b');
+        fill(x2,y2,'b');
+        axis equal;
+        grid on
+        hold on;
+     
+    elseif i==2;
+        fill(x1,y1,'r');
+        fill(x2,y2,'r');
+        axis equal;
+        grid on
+        hold on;
+        
+    elseif i==3;
+        fill(x1,y1,'y');
+        fill(x2,y2,'y');
+        axis equal;
+        grid on
+        hold on;
+    elseif i==4;
+        fill(x1,y1,'g');
+        fill(x2,y2,'g');
+        axis equal;
+        grid on
+        hold on;
+    elseif i==5;
+        fill(x1,y1,'m');
+        fill(x2,y2,'m');
+        axis equal;
+        grid on
+        hold on; 
+    end
+end
+
+^^^^^^^^^^^^^^^^^^^^^^lab 5 elipse^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+x = input('enter x:');
+y = input('enter y:');
+xc = 0;
+yc = y;
+Pk = (y*y) - (x^2*y)+(1/4*x^2);
+a = 2*y*y*x;
+b = 2*x*x*y;
+
+while yc>=0;
+    if Pk < 0;
+        xc = xc+1;
+        Pk = Pk+1;
+        Pk = Pk + (2*y*y*(xc)+(y*y)); 
+        hold on
+        plot(xc,yc,'*')
+        plot(-xc,yc,'*')
+        plot(xc,-yc,'*')
+        plot(-xc,-yc,'*')
+        
+    else 
+        xc = xc+1;
+        yc = yc-1;
+        Pk = Pk+1;
+        Pk = Pk + (2*y*y*xc) + (y*y) - (2*x*x*yc);
+        hold on
+        plot(xc,yc,'*')
+        plot(xc,-yc,'*')
+        plot(-xc,yc,'*')
+        plot(-xc,-yc,'*')
+
+    end
+    hold off
+end
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^lab 6 transformation^^^^^^^^^^^^^^^^^^^^
+
+image = imread('C:\Users\muham\OneDrive\Desktop\hello.jpg');
+% imshow(image)
+rgb = rgb2gray(image);
+% imshow(rgb)
+
+bw = im2bw(image, .7);
+% imshow(bw)
+
+res = imresize(image, [500 1000]);
+% imshow(res)
+
+rot = imrotate(image, 90);
+% imshow(rot)
+
+subplot(2,2,1), imshow(image)
+subplot(2,2,2), imshow(bw)
+subplot(2,2,3), imshow(res)
+subplot(2,2,4), imshow(rot)
+
+***********tanslation****************
+i = imread('C:\Users\muham\Downloads\tri.png');
+
+x = [98,851,851];
+y = [479,47,912];
+T = [100 70];
+p1 = T+[98,479];
+p2 = T+[851,47];
+p3 = T+[851,912];
+x1 = [p1(1) p2(1) p3(1)];
+y1 = [p1(2) p2(2) p3(2)];
+hold on
+fill(x,y,'w')
+fill(x1,y1,'r')
+hold off
+
+
+*************scaling***********************
+i = imread('C:\Users\muham\Downloads\tri.png');
+x = [479,911,52];
+y = [107,850,848];
+p = [0.25; 0.25];
+p1 = p*[479,107];
+p2 = p*[911,850];
+p3 = p*[52,848];
+x1 = [p1(1) p2(1) p3(1)];
+y1 = [p1(2) p2(2) p3(2)];
+hold on
+fill(x,y,'r')
+fill(x1,y1,'w')
+hold off
+
+^^^^^^^^^^^^^^^^^^^lab 9 filter^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+i = imread('C:\Users\muham\OneDrive\Desktop\IMG_4667.JPG');
+% j = imsharpen(i);
+% subplot(4,1,1),imshow(i)
+% subplot(4,1,2),imhist(i)
+% subplot(4,1,3),imshow(j)
+% subplot(4,1,4),imhist(j)
+
+l = rgb2gray(i);
+s = edge(l, 'sobel');
+c = edge(l, 'canny');
+subplot(4,1,1),imshow(i)
+subplot(4,1,2),imshow(l)
+subplot(4,1,3),imshow(s)
+subplot(4,1,4),imshow(c)
+
+^^^^^^^^^^^^^^^^^lab 11 rgb^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+pic = imread('C:\Users\muham\OneDrive\Desktop\IMG_4667.JPG');
+
+A = 356-pic;
+
+subplot(2,2,1),imshow(pic)
+subplot(2,2,2),histogram(pic)
+subplot(2,2,3),imshow(A)
+subplot(2,2,4),histogram(A)
+
+
+R = 153;
+G = 204;
+B = 255;
+C = 1 - R;
+M = 1 - G;
+Y = 1 - B;
+RGB = [153 204 255];
+
+
+x =1/2*((R-G)+(R-B))/((R-G)^2+(R-B)*(G-B))^(1/2);
+radian = acos(x);
+theta = radtodeg(radian);
+if B<G;
+    H = theta;
+else
+    H = 360 - theta;
+end
+S = 1-(3/R+G+B)*(min(RGB));
+
+I = (R+G+B)/3;
+
+
+
+************************octant*************************
+
+r = input('ENTER RADIUS');
+
+x = 0;
+y = r;
+Pk = 1-r;
+plot(x,y,'*')
+hold on
+grid on
+while x<=y; 
+    if Pk<0;
+        x = x+1;
+        y = y;
+        Pk = Pk+(2*x)+1;
+        hold on
+        grid on
+        plot(-x,y,'*')
+
+    else
+        x=x+1;
+        y=y-1;
+        Pk=Pk+(x*2)-(y*2)+1;
+        hold on
+        grid on
+        plot(-x,y,'*')
+
+    end
+    a = 2 * x+2;
+    b = 2 * y-2;
+ 
+end    
+
+
+
+*****************ellipse***********************
+x = input('enter x:');
+y = input('enter y:');
+xc = y;
+yc = x;
+Pk = (y*y) - (x^2*y)+(1/4*x^2);
+a = 2*y*y*x;
+b = 2*x*x*y;
+
+while xc>=0;
+    if Pk < 0;
+        xc = xc+1;
+        Pk = Pk+1;
+        Pk = Pk + (2*y*y*(xc)+(y*y)); 
+        hold on
+        
+        plot(-xc,yc,'*')
+      
+    else 
+        xc = xc-1;
+        yc = yc+1;
+        Pk = Pk+1;
+        Pk = Pk + (2*y*y*xc) + (y*y) - (2*x*x*yc);
+        hold on
+        plot(-xc,yc,'*')
+     
+
+    end
+    hold off
+end
+
+
+****************chatgpt elipse*******************
+
